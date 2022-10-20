@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -15,13 +16,24 @@ export class RegistroComponent implements OnInit {
 
   });
 
-  constructor( private fb: FormBuilder ) { }
+  constructor( private fb: FormBuilder,
+               private auth: AuthService ) { }
 
   ngOnInit(): void {
   }
 
   guardar(){
+
     console.log( this.miFormulario.value );
+
+    this.auth.nuevoUsuario( this.miFormulario.value )
+      .subscribe({
+
+        next: ( resp ) => console.log( resp ),
+        error: ( err ) => console.error( err.error.error.message ),
+
+      });
+    
   }
 
 }
