@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   login(){
     console.log( this.miFormulario.value );
 
-    this.auth.nuevoUsuario( this.miFormulario.value )
+    this.auth.login( this.miFormulario.value )
     .subscribe({
 
       next: ( resp ) => console.log( resp ),
