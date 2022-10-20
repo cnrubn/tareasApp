@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule), 
   },
   {
-    path: 'tareas',
+    path: 'home',
     loadChildren: () => import('./tareas/tareas.module').then( m => m.TareasModule), 
   },
   {
