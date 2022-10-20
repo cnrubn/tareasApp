@@ -1,12 +1,15 @@
 <h3>Login</h3>
 
-<form>
+<form   [formGroup]="miFormulario"
+        (ngSubmit)="login()"
+        >
 
     <div>
 
         <label for="email">Email</label>
         <input  id="email" 
                 type="email" 
+                formControlName="email"
                 >
 
     </div>
@@ -16,6 +19,7 @@
         <label for="password">Contraseña</label>
         <input  id="password" 
                 type="password" 
+                formControlName="password"
                 >
 
     </div>
@@ -30,7 +34,11 @@
 
     <div>
 
-        <button>Ingresar</button>
+        <button type="submit"
+                [disabled]="miFormulario.invalid"
+                >
+                    Ingresar
+        </button>
 
     </div>
 
