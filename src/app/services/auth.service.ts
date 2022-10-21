@@ -28,6 +28,8 @@ export class AuthService {
 
   logout() {
 
+    localStorage.removeItem( 'token' );
+    
   }
 
   login( usuario: Usuario ) {
@@ -77,6 +79,12 @@ export class AuthService {
     this.userToken = idToken;
     localStorage.setItem( 'token', idToken );
 
+    // Operaciones de cara a seguridad. Comprobar si el token ha caducado o no.
+    let hoy = new Date();
+    hoy.setSeconds( 3600 );
+
+    localStorage.setItem( 'expira', hoy.getTime().toString() );
+
   }
 
   leerToken() {
@@ -88,6 +96,26 @@ export class AuthService {
     }
 
     return this.userToken;
+    
+  }
+
+  // Método para las comprobaciones de los Guards.
+  estarAutenticado(): boolean {
+
+    if( this.userToken!.length < 2 ) {
+      return false;
+    }
+
+    // Compración expiración token.
+    const expira = Number( localStorage.getItem( 'expira' ) );
+    const expiraDate = new Date();
+    expiraDate.setTime( expira );
+
+    if( expiraDate > new Date() ) {
+      return true;
+    } else {
+      return false;
+    }
     
   }
   
