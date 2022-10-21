@@ -36,7 +36,21 @@
 
     <div>
 
-        <span>Recordar mi usuario</span>
+        <div    (click)="recordameAccion()">
+
+            <i  class="fa-regular"
+                [ngClass]="{
+                  'fa-circle': !recordame,
+                  'fa-circle-check': recordame
+                }"
+                >
+            </i>
+
+            <!-- <i class="fa-regular fa-circle-check"></i> -->
+
+            <span>Recordar mi usuario</span>
+            
+        </div>
 
         <a  routerLink="/auth/login">¿Ya tienes cuenta?/ Ingresar</a>
 

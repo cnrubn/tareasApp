@@ -10,6 +10,8 @@
         <input  id="email" 
                 type="email" 
                 formControlName="email"
+                [(ngModel)]="emailStorage"
+                placeholder="Correo electrónico"
                 >
 
     </div>
@@ -26,7 +28,22 @@
 
     <div>
 
-        <span>Recordar mi usuario</span>
+        <div    (click)="recordameAccion()">
+
+            <i  class="fa-regular"
+                [ngClass]="{
+                  'fa-circle': !recordame,
+                  'fa-circle-check': recordame
+                }"
+                >
+            </i>
+
+            <!-- <i class="fa-regular fa-circle-check"></i> -->
+
+            <span>Recordar mi usuario</span>
+            
+        </div>
+
 
         <a  routerLink="/auth/registro">¿No tienes cuenta?</a>
 

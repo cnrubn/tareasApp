@@ -13,10 +13,12 @@ import Swal from 'sweetalert2'
 })
 export class RegistroComponent implements OnInit {
 
+  recordame: boolean = false;
+
   miFormulario: FormGroup = this.fb.group({
-    email: [ 'co@co.com', [ Validators.required, Validators.email ] ],
-    nombre: [ 'Rubén', [ Validators.required, Validators.minLength(3) ] ],
-    password: [ '123456', [ Validators.required, Validators.minLength(3) ] ] 
+    email: [ '', [ Validators.required, Validators.email ] ],
+    nombre: [ '', [ Validators.required, Validators.minLength(3) ] ],
+    password: [ '', [ Validators.required, Validators.minLength(3) ] ] 
 
   });
 
@@ -46,6 +48,11 @@ export class RegistroComponent implements OnInit {
 
           console.log( resp );
           Swal.close();
+
+          if( this.recordame ) {
+            localStorage.setItem( 'email', this.miFormulario.value.email )
+          }
+          
           this.router.navigateByUrl( '/home' );
 
         },
@@ -63,6 +70,10 @@ export class RegistroComponent implements OnInit {
 
       });
     
+  }
+
+  recordameAccion() {
+    this.recordame = !this.recordame;
   }
 
 }

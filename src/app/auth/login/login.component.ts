@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/interfaces/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 
 import Swal from 'sweetalert2'
@@ -13,16 +14,32 @@ import Swal from 'sweetalert2'
 export class LoginComponent implements OnInit {
 
   miFormulario: FormGroup = this.fb.group({
-    email: [ 'co@co.com', [ Validators.required, Validators.email ] ],
-    password: [ '123456', [ Validators.required, Validators.minLength(3) ] ] 
+
+    email: [ '', [ Validators.required, Validators.email ] ],
+    password: [ '', [ Validators.required, Validators.minLength(3) ] ] 
 
   });
+
+  recordame: boolean = false;
+  emailStorage: string | null = '';
 
   constructor( private fb: FormBuilder,
                private auth: AuthService, 
                private router: Router ) { }
 
   ngOnInit(): void {
+
+
+    if( localStorage.getItem( 'email' ) ) {
+
+      this.emailStorage = localStorage.getItem( 'email' );
+
+      console.log( 'entra', this.miFormulario.value );
+
+      this.recordame = true;
+      
+    }
+    
   }
 
   login(){
@@ -43,7 +60,16 @@ export class LoginComponent implements OnInit {
       next: ( resp ) => {
 
         console.log( resp );
+
         Swal.close();
+
+        // Funcionalidad "Recordarme", para mantener memorizado el correo o no del usuario.
+        if( this.recordame ) {
+          localStorage.setItem( 'email', this.miFormulario.value.email );
+        } else {
+          localStorage.setItem( 'email', '' )
+        }
+        
         this.router.navigateByUrl( '/home' );
 
         
@@ -62,6 +88,10 @@ export class LoginComponent implements OnInit {
 
     });
     
+  }
+
+  recordameAccion() {
+    this.recordame = !this.recordame;
   }
 
 }
