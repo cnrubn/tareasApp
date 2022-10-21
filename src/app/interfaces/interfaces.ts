@@ -6,3 +6,11 @@ export interface Usuario {
     tareas?: string;
     
 }
+
+export interface Tarea {
+    
+    tit: string;
+    txt: string;
+    tags: string;
+    
+}

@@ -1,0 +1,17 @@
+.contenedor {
+    display: flex;
+    width: 100%;
+    flex: wrap;
+
+    background-color: #ccc;
+
+}
+
+.bloque-izquierda {
+    width: 50%;
+}
+
+.bloque-derecha {
+    width: 50%;
+
+}

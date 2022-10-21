@@ -1,0 +1,28 @@
+<div class="contenedor">
+
+    <div class="bloque-tit">
+        <h3>{{ tarea.tit }}</h3>
+
+        <div class="bloque-funciones">
+
+            <i class="fa-solid fa-pen-to-square"></i>
+
+            <i class="fa-solid fa-trash"></i>
+            
+        </div>
+        
+    </div>
+
+    <div class="bloque-tarea">
+        <p>{{ tarea.txt }}</p>
+    </div>
+
+    <div class="bloque-tags">
+        
+        <ul *ngFor="let tag of tarea.tags | listadoTags">
+            <li>{{ tag }}</li>
+        </ul>
+        
+    </div>
+    
+</div>

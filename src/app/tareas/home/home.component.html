@@ -1,1 +1,84 @@
-<p  (click)="salir()">Salir</p>
+<div class="contenedor">
+
+    <!-- BLOQUE IZQUIERDO. USUARIO Y NUEVA TAREA -->
+    <div class="bloque-izquierda">
+        
+        <div class="bloque-datos">
+            <h3>Nombre</h3>
+            <p  (click)="salir()">Salir</p>
+        </div>
+
+        <div class="bloque-form">
+
+            <form   [formGroup]="miTarea"
+                    (ngSubmit)="guardarTarea()"
+                    >
+
+                <div>
+
+                    <label for="tit">Título tarea</label>
+                    <input  id="tit" 
+                            type="text" 
+                            placeholder="Título tarea"
+                            formControlName="tit"
+                            >
+
+                </div>
+
+                <div>
+
+                    <label for="txt">Tarea</label>
+                    <input  id="txt" 
+                            type="text" 
+                            placeholder="Tarea"
+                            formControlName="txt"
+                            >
+
+                </div>
+
+                <div>
+
+                    <label for="tags">Tags</label>
+                    <input  id="tags" 
+                            type="text" 
+                            placeholder="Separa cada tag por coma"
+                            formControlName="tags"
+                            >
+
+                </div>
+
+                <div>
+
+                    <button type="submit"
+                            [disabled]="miTarea.invalid"
+                            >
+                                Ingresar
+                    </button>
+            
+                </div>
+                
+            </form>
+            
+        </div>
+        
+    </div>
+
+    <!-- BLOQUE DERECHO. FILTRO Y TAREAS -->
+    <div class="bloque-derecha">
+        
+        <div class="filtro">
+            <p>Filtro</p>
+        </div>
+
+        <div    class="bloque-tareas"
+                *ngFor="let tarea of listadoTareas"
+                >
+
+            <app-tarea  [tarea]="tarea"></app-tarea>
+
+        </div>
+        
+    </div>
+    
+</div>
+
