@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Usuario } from '../interfaces/interfaces';
+import { respFirebase, Usuario } from '../interfaces/interfaces';
 
 import { map } from 'rxjs/operators';
 import { CrudService } from './crud.service';
@@ -16,7 +16,6 @@ export class AuthService {
   userToken: string | null = '';
 
   localId: string = '';
-
 
   // Crear nuevo usuario
   // https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
@@ -34,20 +33,18 @@ export class AuthService {
   logout() {
 
     localStorage.removeItem( 'token' );
-
     localStorage.removeItem( 'localId' );
     
   }
 
   login( usuario: Usuario ) {
 
-
     const authData = {
       ...usuario,
       returnSecureToken: true
     }
 
-    return this.http.post<any>(
+    return this.http.post<respFirebase>(
       `${ this.url }/accounts:signInWithPassword?key=${ this.apikey }`, authData
     ).pipe(
       map( resp => {
@@ -64,14 +61,12 @@ export class AuthService {
 
   nuevoUsuario( usuario: Usuario ) {
 
-    // console.log(usuario);
-
     const authData = {
       ...usuario,
       returnSecureToken: true
     }
 
-    return this.http.post<any>(
+    return this.http.post<respFirebase>(
       `${ this.url }/accounts:signUp?key=${ this.apikey }`, authData
     ).pipe(
       map( resp => {

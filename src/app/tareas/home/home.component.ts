@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Tarea } from 'src/app/interfaces/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 import { CrudService } from 'src/app/services/crud.service';
+import { infoUsuario, Tarea } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-home',
@@ -21,15 +21,13 @@ export class HomeComponent implements OnInit {
 
   });
 
-  listadoTareas: any[] = [];
-  listadoRespuesta: any;
+  listadoTareas!: Tarea[] ;
+  listadoRespuesta!: infoUsuario;
   tareaModificar: any = {
     tit: '',
     txt: '',
     tags: ''
   };
-
-  listadoTareasCopy: any;
 
   modificarActivacion: number = -1;
 
@@ -47,16 +45,11 @@ export class HomeComponent implements OnInit {
       
         this.listadoRespuesta = resp;
         this.listadoTareas = resp.tareas;
-  
-        console.log(this.listadoRespuesta)
-        console.log(this.listadoTareas)
         
       })
       
     }, 1000 );
 
-
-    
   }
 
   salir() {
@@ -68,13 +61,10 @@ export class HomeComponent implements OnInit {
 
   guardarTarea() {
 
-
     // Funcionalidad para eliminar la tarea cuando se confimra la modificación de una tarea existente.
     if ( this.modificarActivacion >= 0 ) {
 
-      this.listadoRespuesta.tareas.splice( this.modificarActivacion, 1 );
-
-      // this.modificar( this.modificarActivacion );
+      this.listadoRespuesta.tareas!.splice( this.modificarActivacion, 1 );
 
       this.modificarActivacion = -1;
 
@@ -92,11 +82,11 @@ export class HomeComponent implements OnInit {
 
   }
 
-  modificar( index: any ) {
+  modificar( index: number ) {
 
     this.modificarActivacion = index;
 
-    this.tareaModificar = this.listadoRespuesta.tareas[ index ];
+    this.tareaModificar = this.listadoRespuesta.tareas![ index ];
     
   }
 

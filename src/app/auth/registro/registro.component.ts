@@ -5,7 +5,6 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import Swal from 'sweetalert2'
 
-
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -16,9 +15,9 @@ export class RegistroComponent implements OnInit {
   recordame: boolean = false;
 
   miFormulario: FormGroup = this.fb.group({
-    email: [ 'co12@co.com', [ Validators.required, Validators.email ] ],
-    nombre: [ 'Rubén', [ Validators.required, Validators.minLength(3) ] ],
-    password: [ '123456', [ Validators.required, Validators.minLength(3) ] ] 
+    email: [ '', [ Validators.required, Validators.email ] ],
+    nombre: [ '', [ Validators.required, Validators.minLength(3) ] ],
+    password: [ '', [ Validators.required, Validators.minLength(3) ] ] 
 
   });
 
@@ -31,9 +30,6 @@ export class RegistroComponent implements OnInit {
 
   guardar(){
 
-    // console.log( this.miFormulario.value );
-
-    // SweetAlert2 | Esperando respuesta servidor.
     Swal.fire({
       allowOutsideClick: false,
       icon: 'info',
@@ -46,7 +42,6 @@ export class RegistroComponent implements OnInit {
 
         next: ( resp ) => {
 
-          // console.log( resp );
           Swal.close();
 
           if( this.recordame ) {

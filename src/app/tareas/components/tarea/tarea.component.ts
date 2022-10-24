@@ -9,23 +9,16 @@ import { CrudService } from 'src/app/services/crud.service';
 })
 export class TareaComponent implements OnInit {
 
-  @Input() tareasEnvio!: any;
-
+  @Input() tareasEnvio: Tarea[] | undefined;
   @Output() indexMod: EventEmitter<number> = new EventEmitter();
 
   modoModificar: boolean = false;
 
-
   constructor( private crudSv: CrudService ) { }
 
-  ngOnInit(): void {
-
-    console.log(this.tareasEnvio)
-    
-  }
+  ngOnInit(): void { }
 
   eliminar( index: number ) {
-    console.log(index)
 
     this.crudSv.eliminarDb( index );
     
@@ -42,9 +35,6 @@ export class TareaComponent implements OnInit {
 
     }, 2000 );
 
-
-
-    
   }
 
 }
