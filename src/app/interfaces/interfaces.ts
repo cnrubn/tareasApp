@@ -28,10 +28,19 @@ export interface infoUsuario {
     tareas?: Tarea[];
 
 }
+
 export interface Tarea {
     
     tit: string;
     txt: string;
     tags: string;
+    
+}
+
+export interface Redes {
+    
+    nombre: string;
+    logo: string;
+    url: string;
     
 }
