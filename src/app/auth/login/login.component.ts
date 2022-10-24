@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
 
   miFormulario: FormGroup = this.fb.group({
 
-    email: [ '', [ Validators.required, Validators.email ] ],
-    password: [ '', [ Validators.required, Validators.minLength(3) ] ] 
+    email: [ 'co@co.com', [ Validators.required, Validators.email ] ],
+    password: [ '123456', [ Validators.required, Validators.minLength(3) ] ] 
 
   });
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
       this.emailStorage = localStorage.getItem( 'email' );
 
-      console.log( 'entra', this.miFormulario.value );
+      // console.log( 'entra', this.miFormulario.value );
 
       this.recordame = true;
       
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
 
       next: ( resp ) => {
 
-        console.log( resp );
+        // console.log( resp );
 
         Swal.close();
 

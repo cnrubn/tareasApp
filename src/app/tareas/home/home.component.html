@@ -4,7 +4,7 @@
     <div class="bloque-izquierda">
         
         <div class="bloque-datos">
-            <h3>Nombre</h3>
+            <h3>nombre</h3>
             <p  (click)="salir()">Salir</p>
         </div>
 
@@ -21,6 +21,7 @@
                             type="text" 
                             placeholder="Título tarea"
                             formControlName="tit"
+                            [ngModel]="tareaModificar.tit"
                             >
 
                 </div>
@@ -28,10 +29,12 @@
                 <div>
 
                     <label for="txt">Tarea</label>
+                    <!-- Cambiar a textarea -->
                     <input  id="txt" 
                             type="text" 
                             placeholder="Tarea"
                             formControlName="txt"
+                            [ngModel]="tareaModificar.txt"
                             >
 
                 </div>
@@ -43,6 +46,7 @@
                             type="text" 
                             placeholder="Separa cada tag por coma"
                             formControlName="tags"
+                            [ngModel]="tareaModificar.tags"
                             >
 
                 </div>
@@ -64,19 +68,30 @@
     </div>
 
     <!-- BLOQUE DERECHO. FILTRO Y TAREAS -->
-    <div class="bloque-derecha">
+    <div    class="bloque-derecha"
+            >
         
-        <div class="filtro">
-            <p>Filtro</p>
-        </div>
 
-        <div    class="bloque-tareas"
-                *ngFor="let tarea of listadoTareas"
+        <!-- Esperando la carga de los datos -->
+        <div    class="cargando-bloque-tareas"
+                *ngIf="!listadoRespuesta; else cargado"
                 >
-
-            <app-tarea  [tarea]="tarea"></app-tarea>
-
+                    Cargando
         </div>
+
+
+        <!-- Datos cargados -->
+        <ng-template    #cargado>
+
+            <div    class="bloque-tareas"
+                    >
+                        <app-tarea  [tareasEnvio]="listadoRespuesta.tareas"
+                                    (indexMod)="modificar( $event )"
+                                    >
+                        </app-tarea>
+            </div>
+
+        </ng-template>
         
     </div>
     

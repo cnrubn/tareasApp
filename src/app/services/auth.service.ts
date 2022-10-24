@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../interfaces/interfaces';
 
 import { map } from 'rxjs/operators';
+import { CrudService } from './crud.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,17 @@ export class AuthService {
 
   userToken: string | null = '';
 
+  localId: string = '';
+
+
   // Crear nuevo usuario
   // https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
 
   // Login
   // https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
 
-  constructor( private http: HttpClient ) { 
+  constructor( private http: HttpClient,
+               private crudSv: CrudService ) { 
 
     this.leerToken();
     
@@ -29,10 +34,13 @@ export class AuthService {
   logout() {
 
     localStorage.removeItem( 'token' );
+
+    localStorage.removeItem( 'localId' );
     
   }
 
   login( usuario: Usuario ) {
+
 
     const authData = {
       ...usuario,
@@ -45,6 +53,7 @@ export class AuthService {
       map( resp => {
 
         this.guardarToken( resp['idToken'] );
+        this.guardarlocalId( resp['localId'] );
 
         return resp;
         
@@ -54,6 +63,8 @@ export class AuthService {
   }
 
   nuevoUsuario( usuario: Usuario ) {
+
+    // console.log(usuario);
 
     const authData = {
       ...usuario,
@@ -66,7 +77,16 @@ export class AuthService {
       map( resp => {
 
         this.guardarToken( resp['idToken'] );
+        this.guardarlocalId( resp['localId'] );
 
+        // Envio de los datos para identificar al usuario y crear su listado personal.
+        const crudData = {
+          ...resp,
+          usuario: usuario.nombre
+        }
+
+        this.crudSv.getIdDatos( crudData );
+        
         return resp;
         
       })
@@ -84,6 +104,13 @@ export class AuthService {
     hoy.setSeconds( 3600 );
 
     localStorage.setItem( 'expira', hoy.getTime().toString() );
+
+  }
+
+  private guardarlocalId( idToken: string ) {
+    
+    this.localId = idToken;
+    localStorage.setItem( 'localId', this.localId );
 
   }
 

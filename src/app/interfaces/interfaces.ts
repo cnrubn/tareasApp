@@ -12,5 +12,6 @@ export interface Tarea {
     tit: string;
     txt: string;
     tags: string;
+    id?: number;
     
 }
