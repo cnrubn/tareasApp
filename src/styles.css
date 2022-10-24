@@ -2,3 +2,75 @@ body {
     padding: 0;
     margin: 0;
 }
+
+/* Estilos componentes login y registro. */
+.contenedor-global-login {
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    flex: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -200px;
+}
+
+h3 {
+    font-size: 50px;
+    color: #373159;
+    margin: 20px;
+}
+
+.b-input {
+    border: none;
+    background-color: #e3e3e3;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+    margin: 15px 0;
+    padding: 20px 15px;
+    border-radius: 5px;
+}
+
+.b-usuario {
+    display: flex;
+    flex: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 10px; 
+}
+
+.b-usuario .b-recordar {
+    display: flex;
+    flex: wrap;
+    align-items: center;
+    color: #757575;
+    cursor: pointer;
+}
+
+.b-usuario .b-recordar .fa-regular {
+    padding-right: 3px;
+    font-size: 12px;
+}
+
+.b-usuario .b-recordar span {
+    padding-right: 5px;
+    font-size: 15px;
+}
+
+.b-usuario a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #9796d1;
+}
+
+.b-input.btn {
+    background-color: #a09ff5;
+    color: #fff;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.b-input.btn:hover {
+    background-color: #7674f7;
+}
+

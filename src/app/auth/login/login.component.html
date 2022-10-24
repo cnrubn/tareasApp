@@ -1,64 +1,67 @@
-<h3>Login</h3>
+<div class="contenedor-global-login">
 
-<form   [formGroup]="miFormulario"
-        (ngSubmit)="login()"
-        >
-
-    <div>
-
-        <label for="email">Email</label>
-        <input  id="email" 
-                type="email" 
-                formControlName="email"
-                [(ngModel)]="emailStorage"
-                placeholder="Correo electrónico"
-                >
-
-    </div>
-
-    <div>
-
-        <label for="password">Contraseña</label>
-        <input  id="password" 
-                type="password" 
-                formControlName="password"
-                >
-
-    </div>
-
-    <div>
-
-        <div    (click)="recordameAccion()">
-
-            <i  class="fa-regular"
-                [ngClass]="{
-                  'fa-circle': !recordame,
-                  'fa-circle-check': recordame
-                }"
-                >
-            </i>
-
-            <!-- <i class="fa-regular fa-circle-check"></i> -->
-
-            <span>Recordar mi usuario</span>
-            
-        </div>
-
-
-        <a  routerLink="/auth/registro">¿No tienes cuenta?</a>
-
-    </div>
-
-    <div>
-
-        <button type="submit"
-                [disabled]="miFormulario.invalid"
-                >
-                    Ingresar
-        </button>
-
-    </div>
-
-
+    <h3>LOGIN</h3>
     
-</form>
+    <form   [formGroup]="miFormulario"
+            (ngSubmit)="login()"
+            >
+    
+        <div>
+    
+            <input  id="email"
+                    type="email"
+                    class="b-input"
+                    formControlName="email"
+                    [(ngModel)]="emailStorage"
+                    placeholder="Correo electrónico"
+                    >
+    
+        </div>
+    
+        <div>
+    
+            <input  id="password"
+                    type="password"
+                    class="b-input"
+                    formControlName="password"
+                    placeholder="Contraseña"
+                    >
+    
+        </div>
+    
+        <div    class="b-usuario">
+    
+            <div    (click)="recordameAccion()"
+                    class="b-recordar"
+                    >
+    
+                <i  class="fa-regular"
+                    [ngClass]="{
+                      'fa-circle': !recordame,
+                      'fa-circle-check': recordame
+                    }"
+                    >
+                </i>
+        
+                <span>Recordar mi usuario</span>
+    
+            </div>
+    
+            <a  routerLink="/auth/registro">¿No tienes cuenta?</a>
+    
+        </div>
+    
+        <div>
+    
+            <button type="submit"
+                    [disabled]="miFormulario.invalid"
+                    class="b-input btn"
+                    >
+                        Ingresar
+            </button>
+    
+        </div>
+    
+    </form>
+
+</div>

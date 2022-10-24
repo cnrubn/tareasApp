@@ -8,15 +8,9 @@
 .contenedor-outlet {
     flex: auto;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
 }
-
-/* .contenido {
-    background-color: #fff;
-    border-radius: 25px;
-    margin: 40px auto;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-} */
 
 app-footer {
     margin: 0;

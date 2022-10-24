@@ -2,21 +2,19 @@
     background-color: #000;
     color: #ccc;
     min-height: 5vh;
-
     display: flex;
     flex: wrap;
     justify-content: space-evenly;
-    
 }
 
 .bloque-txt h3 {
     font-size: 15px;
     text-align: center;
+    color: #ccc;
 }
 
 .bloque-redes {
     font-size: 15px;
-    /* margin-top: 10px; */
 }
 
 .bloque-redes ul {
