@@ -1,27 +1,12 @@
-# Netberry
+## Tareas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+## 
 
-## Development server
+### Proyecto con sistema de autenticación inicial que da paso a un CRUD completo que permite la anotación de tareas con título, descripción de la misma y tags. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![Captura de pantalla 2022-10-25 a las 12 01 12](https://user-images.githubusercontent.com/75250742/197745183-375f8cce-14fd-48b2-9182-94573dc4f977.png)
+![Captura de pantalla 2022-10-25 a las 12 01 20](https://user-images.githubusercontent.com/75250742/197745220-717f9529-de27-44a3-b180-f6b99116226c.png)
+![Captura de pantalla 2022-10-25 a las 12 01 49](https://user-images.githubusercontent.com/75250742/197745244-f09a4de8-261c-4f8f-8b48-a568fca82816.png)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
