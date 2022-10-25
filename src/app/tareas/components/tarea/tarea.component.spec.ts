@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TareaComponent } from './tarea.component';
@@ -8,7 +9,10 @@ describe('TareaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TareaComponent ]
+      declarations: [ TareaComponent ],
+      imports: [
+        HttpClientTestingModule,
+      ]
     })
     .compileComponents();
 
