@@ -33,7 +33,7 @@ export class CrudService {
           tit: "Bienvenido/a a Tareas",
           txt: "Añade o modifica tus tareas desde el visor de tareas o elimínalas directamente desde el botón eliminar. No olvides separar con comas los tags que desee crear.",
           tags: "Tareas"
-        }
+        },
       ]
     }
     
@@ -49,8 +49,8 @@ export class CrudService {
 
     return this.http.get<Tarea>( `${ this.urlApi }/.json` )
     .pipe( 
-      map( resp => {    
-        
+      map( resp => {  
+                
         const listado = this.crearArreglo( resp ) 
 
         for( let usuario of listado ) {

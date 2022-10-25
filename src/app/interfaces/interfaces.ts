@@ -23,7 +23,7 @@ export interface Usuario {
 export interface infoUsuario {
 
     idu?: string;
-    localId: string;
+    localId?: string;
     nombre?: string;
     tareas?: Tarea[];
 

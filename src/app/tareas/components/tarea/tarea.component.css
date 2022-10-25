@@ -1,0 +1,61 @@
+.modo-modificar {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: rgb(196, 251, 204);  
+    border-radius: 25px;
+    padding: 20px 20px;  
+    text-align: center;
+    font-size: 25px;
+    max-width: 40vw;
+}
+
+.contenedor {
+    border: 1px solid #E3E3E3;
+    margin: 20px 0;
+    border-radius: 25px;
+    padding: 20px;
+    max-width: 40vw;
+}
+
+.contenedor .bloque-funciones {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.contenedor .bloque-funciones .icon {
+    font-size: 20px;
+    padding: 0 10px;
+    color: #ddd;
+}
+
+.contenedor .bloque-funciones .icon.editar:hover {
+    color: rgb(0, 115, 255);
+}
+
+.contenedor .bloque-funciones .icon.cubo:hover {
+    color: red;
+}
+
+.bloque-tarea {
+    margin: 20px;
+    font-size: 25px;
+    line-height: 40px;
+}
+
+.bloque-tags {
+    display: flex;
+    list-style: none;
+    flex: wrap;
+}
+
+.bloque-tags ul {
+    padding: 5px;
+}
+
+.bloque-tags ul li {
+    list-style: none;
+    border: 1px solid rgb(212, 212, 212);
+    color: rgb(155, 155, 155);
+    border-radius: 25px;
+    padding: 8px 15px;
+}

@@ -17,7 +17,7 @@ export class RegistroComponent implements OnInit {
   miFormulario: FormGroup = this.fb.group({
     email: [ '', [ Validators.required, Validators.email ] ],
     nombre: [ '', [ Validators.required, Validators.minLength(3) ] ],
-    password: [ '', [ Validators.required, Validators.minLength(3) ] ] 
+    password: [ '', [ Validators.required ] ] 
 
   });
 
@@ -54,12 +54,25 @@ export class RegistroComponent implements OnInit {
         error: ( err ) => {
           console.error( err.error.error.message );
 
-          // SweetAlert2 | Error login.
-          Swal.fire({
-            title: 'Error al registrarse',
-            icon: 'error',
-            text: 'El correo usado ya existe'
-          });          
+          if( err.error.error.message === "EMAIL_EXISTS" ) {
+            
+            // SweetAlert2 | Error correo.
+            Swal.fire({
+              title: 'Error al registrarse',
+              icon: 'error',
+              text: 'El correo usado ya existe'
+            }); 
+            
+          } else {
+
+            // SweetAlert2 | Error genérico.
+            Swal.fire({
+              title: 'Error al registrarse',
+              icon: 'error',
+              text: 'La contraseña debe ser de 6 caracteres o más, o pruebe de nuevo con otros datos'
+            });             
+            
+          }
           
         },
 

@@ -9,7 +9,11 @@
     flex: auto;
     margin: 0 auto;
     display: flex;
-    align-items: center;
+    align-items: start;
+    width: 100%;
+    justify-content: center;
+
+    /* background-color: orange; */
 }
 
 app-footer {

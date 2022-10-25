@@ -1,17 +1,96 @@
+.cargando-bloque-tareas {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: rgb(196, 251, 204);  
+    border-radius: 25px;
+    padding: 25px 0;  
+    text-align: center;
+    font-size: 25px;
+}
+
 .contenedor {
     display: flex;
-    width: 100%;
+    width: 100vw;
     flex: wrap;
-
-    background-color: #ccc;
-
+    font-family: 'Ubuntu', sans-serif;
+    justify-content: flex-end;
 }
 
+/* BLOQUE IZQUIERDO */
 .bloque-izquierda {
-    width: 50%;
+    width: 50vW;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex: wrap;
+    flex-direction: column;
+    padding: 0 20px;
 }
 
-.bloque-derecha {
-    width: 50%;
+.bloque-izquierda .bloque-datos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: wrap;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+    max-width: 400px;
+    width: 80%;
+    padding: 0 40px;
+    max-width: 300px; 
+}
 
+.bloque-izquierda .bloque-datos h3 {
+    margin: 10px 0;
+    margin-top: 30px;   
+}
+
+.bloque-izquierda .bloque-datos p {
+    margin: 5px 0;
+    padding: 4px 0;
+    width: 30%;
+    text-align: center;
+    border: 1px solid #fff;
+}
+
+.bloque-izquierda .bloque-datos p:hover {
+    cursor: pointer;
+    color: red;
+    border-radius: 25px;
+    border: 1px solid red;
+}
+
+/* VISOR TAREAS */
+.bloque-izquierda .bloque-form {
+    margin-top: 50px;
+    background-color: #E3E3E3;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    max-width: 300px;
+    display: block;
+}
+
+.bloque-izquierda .bloque-form .b-input {
+    width: 100%;
+    padding: 10px 0px;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.bloque-izquierda .bloque-form .textarea {
+    resize: none;
+    width: 100%;
+    height: 150px;
+}
+
+/* BLOQUE DERECHA */
+.bloque-derecha {
+    width: 50vw;
+    padding: 0 50px;
+}
+
+.bloque-izquierda .bloque-form {
+    width: 100%;
 }

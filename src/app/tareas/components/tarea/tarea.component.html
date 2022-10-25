@@ -1,35 +1,30 @@
-<div    *ngIf="modoModificar">
-    Modifica en visor
+<div    *ngIf="modoModificar"
+        class="modo-modificar"
+        >
+    Modificar en visor
 </div>
 
 <div    class="contenedor"
         *ngFor="let tarea of tareasEnvio; let i = index"
         >
 
+    <div class="bloque-funciones">
 
+        <i  class="fa-solid fa-pen-to-square icon editar"
+            (click)="modificar( i )"
+            >
+        </i>
 
+        <i  class="fa-solid fa-trash icon cubo"
+            (click)="eliminar( i )"
+            >
+        </i>
+
+    </div>
         
-        
-
     <div class="bloque-tit">
 
-        <p>{{ i }}</p>
-
         <h3>{{ tarea.tit }}</h3>
-
-        <div class="bloque-funciones">
-
-            <i  class="fa-solid fa-pen-to-square"
-                (click)="modificar( i )"
-                >
-            </i>
-
-            <i  class="fa-solid fa-trash"
-                (click)="eliminar( i )"
-                >
-            </i>
-
-        </div>
 
     </div>
 
