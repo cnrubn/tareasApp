@@ -14,6 +14,12 @@
                     class="b-input"
                     placeholder="Correo electrónico"
                     >
+
+            <div    *ngIf="campoEmailValido()"
+                    class="alert-form"
+                    >
+                        Formato de correo no válido.
+            </div>
     
         </div>
     
@@ -25,6 +31,12 @@
                     class="b-input"
                     placeholder="Nombre Usuario"
                     >
+
+            <div    *ngIf="campoNomValido()"
+                    class="alert-form"
+                    >
+                        Debe tener al menos 3 caracteres.
+            </div>                    
     
         </div>
     
@@ -36,6 +48,12 @@
                     class="b-input"
                     placeholder="Contraseña"
                     >
+
+            <div    *ngIf="campoPassValido()"
+                    class="alert-form"
+                    >
+                        Debe tener al menos 6 caracteres.
+            </div>
     
         </div>
     

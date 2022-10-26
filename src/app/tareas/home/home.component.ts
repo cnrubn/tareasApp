@@ -109,4 +109,12 @@ export class HomeComponent implements OnInit {
     
   }
 
+  // COMPROBACIONES VISOR TAREAS
+  campoTamValido( data: string ) {
+
+    return this.miTarea.controls[data].errors &&
+    this.miTarea.controls[data].touched;
+    
+  }
+
 }

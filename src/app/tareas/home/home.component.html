@@ -34,6 +34,12 @@
                             maxlength="20"
                             >
 
+                    <div    *ngIf="campoTamValido( 'tit' )"
+                            class="alert-form"
+                            >
+                                Título debe tener al menos 3 caracteres y un máximo de 20.
+                    </div>                            
+
                 </div>
 
                 <div>
@@ -47,6 +53,12 @@
                                 >
                                 Tarea
                     </textarea>
+
+                    <div    *ngIf="campoTamValido( 'txt' )"
+                            class="alert-form"
+                            >
+                                Tarea debe tener al menos 3 caracteres.
+                    </div>                     
 
                 </div>
 

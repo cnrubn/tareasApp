@@ -74,3 +74,8 @@ h3 {
     background-color: #7674f7;
 }
 
+/* Alertas formularios y visor */
+.alert-form {
+    color: red;
+}
+

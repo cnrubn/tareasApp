@@ -84,4 +84,26 @@ export class LoginComponent implements OnInit {
     this.recordame = !this.recordame;
   }
 
+
+  // COMPROBACIONES FORMULARIO
+  campoEmailValido( ) {
+
+    return this.miFormulario.controls['email'].errors &&
+    this.miFormulario.controls['email'].touched;
+    
+  }
+
+
+  campoPassValido( ) {
+
+    const longPass: string = this.miFormulario.value.password;
+
+    if ( longPass.length < 6 && this.miFormulario.touched ) {
+      return this.miFormulario.controls['password'].touched;
+    }
+
+    return this.miFormulario.controls['password'].errors &&
+           this.miFormulario.controls['password'].touched;
+  }
+
 }

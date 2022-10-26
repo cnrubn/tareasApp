@@ -15,6 +15,11 @@
                     [(ngModel)]="emailStorage"
                     placeholder="Correo electrónico"
                     >
+            <div    *ngIf="campoEmailValido()"
+                    class="alert-form"
+                    >
+                        Formato de correo no válido.
+            </div>
     
         </div>
     
@@ -26,6 +31,12 @@
                     formControlName="password"
                     placeholder="Contraseña"
                     >
+                    
+            <div    *ngIf="campoPassValido()"
+                    class="alert-form"
+                    >
+                        Debe tener al menos 6 caracteres.
+            </div>
     
         </div>
     
