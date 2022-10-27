@@ -23,7 +23,7 @@
                     (ngSubmit)="guardarTarea()"
                     >
 
-                <div>
+                <div    class="b-caja-input">
 
                     <input  id="tit" 
                             type="text" 
@@ -42,7 +42,7 @@
 
                 </div>
 
-                <div>
+                <div    class="b-caja-input">
 
                     <textarea   id="txt" 
                                 type="text" 
@@ -62,23 +62,61 @@
 
                 </div>
 
-                <div>
+                <div    class="b-tags"
+                        formArrayName="tags"
+                        >
 
-                    <input  id="tags" 
-                            type="text" 
-                            placeholder="Tags, Separar por coma"
-                            formControlName="tags"
-                            [ngModel]="tareaModificar.tags"
-                            class="b-input"
-                            >
+                    <div class="b-introducir-tags">
+
+                        <input  id="tags"
+                                type="text"
+                                placeholder="Tags"
+                                class="b-input"
+                                [formControl]="nuevoTag"
+                                maxlength="15"
+                                >                             
+                        
+                        <div>
+                            <i  class="fa-solid fa-circle-plus"
+                                (click)="agregarTag()"
+                                >
+                            </i>
+                        </div>
+
+                    </div>
+
+                    <div class="bloque-tag">
+                        <ul *ngFor="let tag of tagsArr.value; let i = index">
+                            <li (click)="eliminarTag( i )"
+                                >
+                                    {{ tag }}
+                            </li>
+                        </ul>
+                    </div>
 
                 </div>
+
+
+
+                <div    *ngIf="this.tagsArr.value.length === 0"
+                        class=""
+                        >
+
+                        <p>
+                            Escribe el tag deseado y pulsa + para añadirlo a la tarea. Puedes pulsar sobre el tag creado para eliminarlo.
+
+                        </p>
+                        <p>
+                            Cada tag debe de tener entre 3 a 15 caracteres.
+                        </p>
+
+                </div> 
 
                 <div>
 
                     <button type="submit"
-                            [disabled]="miTarea.invalid"
                             class="b-input btn"
+                            [disabled]="miTarea.invalid"
                             >
                                 Guardar
                     </button>
@@ -90,6 +128,15 @@
         </div>
         
     </div>
+
+
+    <!-- <span>Value</span>
+    <pre>{{ miTarea.value | json }}</pre>
+
+    <span>Agregar tag</span>
+    <pre>{{ nuevoTag.value | json }}</pre> -->
+    
+    
 
     <!-- BLOQUE DERECHO. FILTRO Y TAREAS -->
         

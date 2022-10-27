@@ -63,7 +63,7 @@
 
 /* VISOR TAREAS */
 .bloque-izquierda .bloque-form {
-    margin-top: 50px;
+    margin: 50px 0;
     background-color: #E3E3E3;
     padding: 40px;
     border-radius: 25px;
@@ -72,18 +72,47 @@
     display: block;
 }
 
-.bloque-izquierda .bloque-form .b-input {
+.bloque-izquierda .bloque-form .b-caja-input input {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.bloque-izquierda .bloque-form .b-tags {
+    display: flex;
+    align-items: center;
+}
+
+.bloque-izquierda .bloque-form .b-tags i {
+    color: #a09ff5;
+    font-size: 25px;
+    margin: 5px;
+}
+
+.bloque-izquierda .bloque-form .b-tags i:hover {
+    color: #7674f7;
+    cursor: pointer;
+}
+
+.bloque-izquierda .bloque-form .b-tags .b-input {
     width: 100%;
     padding: 10px 0px;
     margin: 10px 0;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .bloque-izquierda .bloque-form .textarea {
     resize: none;
     width: 100%;
     height: 150px;
+    padding: 20px 0;
+    font-size: 25px;
 }
+
+.bloque-izquierda .bloque-form {
+    width: 100%;
+}
+
+
 
 /* BLOQUE DERECHA */
 .bloque-derecha {
@@ -91,6 +120,43 @@
     padding: 0 50px;
 }
 
-.bloque-izquierda .bloque-form {
-    width: 100%;
+/* BLOQUE TAGS */
+.b-tags {
+    display: flex;
+    flex-direction: column;
+}
+
+.b-tags .b-introducir-tags {
+    display: flex;
+    align-items: center;
+}
+
+.bloque-tag {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: first baseline;
+    overflow: hidden;
+}
+
+.bloque-tag ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+}
+
+.bloque-tag ul li {
+    list-style: none;
+    border: 1px solid rgb(212, 212, 212);
+    color: rgb(155, 155, 155);
+    border-radius: 25px;
+    padding: 8px 15px;
+    margin: 5px;
+}
+
+.bloque-tag ul li:hover {
+    color: red;
+    border: 1px solid red;
+    cursor: pointer;
 }
