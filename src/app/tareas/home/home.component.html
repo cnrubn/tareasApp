@@ -3,128 +3,104 @@
     <!-- BLOQUE IZQUIERDO. USUARIO Y NUEVA TAREA -->
     <div class="bloque-izquierda">
         
-        <div    class="bloque-datos"
-                *ngIf="listadoRespuesta.nombre === undefined"
-                >
-            <h3>Cargando...</h3>
-            
-        </div>
-        
-        <div class="bloque-datos">
-
-            <h3>{{ listadoRespuesta.nombre }}</h3>
-            <p  (click)="salir()">Salir</p>
-
-        </div>
-
-        <div class="bloque-form">
-
-            <form   [formGroup]="miTarea"
-                    (ngSubmit)="guardarTarea()"
+        <div class="bloque-visor">
+            <div    class="bloque-datos"
+                    *ngIf="listadoRespuesta.nombre === undefined"
                     >
-
-                <div    class="b-caja-input">
-
-                    <input  id="tit" 
-                            type="text" 
-                            placeholder="Título"
-                            formControlName="tit"
-                            [ngModel]="tareaModificar.tit"
-                            class="b-input"
-                            maxlength="20"
-                            >
-
-                    <div    *ngIf="campoTamValido( 'tit' )"
-                            class="alert-form"
-                            >
-                                Título debe tener al menos 3 caracteres y un máximo de 20.
-                    </div>                            
-
-                </div>
-
-                <div    class="b-caja-input">
-
-                    <textarea   id="txt" 
-                                type="text" 
-                                placeholder="Tarea"
-                                formControlName="txt"
-                                [ngModel]="tareaModificar.txt"
-                                class="b-input textarea"
-                                >
-                                Tarea
-                    </textarea>
-
-                    <div    *ngIf="campoTamValido( 'txt' )"
-                            class="alert-form"
-                            >
-                                Tarea debe tener al menos 3 caracteres.
-                    </div>                     
-
-                </div>
-
-                <div    class="b-tags"
-                        formArrayName="tags"
+                <h3>Cargando...</h3>
+            
+            </div>
+            
+            <div class="bloque-datos">
+                <h3>{{ listadoRespuesta.nombre }}</h3>
+                <p  (click)="salir()">Salir</p>
+            </div>
+            <div class="bloque-form">
+                <form   [formGroup]="miTarea"
+                        (ngSubmit)="guardarTarea()"
                         >
-
-                    <div class="b-introducir-tags">
-
-                        <input  id="tags"
+                    <div    class="b-caja-input">
+                        <input  id="tit"
                                 type="text"
-                                placeholder="Tags"
+                                placeholder="Título"
+                                formControlName="tit"
+                                [ngModel]="tareaModificar.tit"
                                 class="b-input"
-                                [formControl]="nuevoTag"
-                                maxlength="15"
-                                >                             
-                        
-                        <div>
-                            <i  class="fa-solid fa-circle-plus"
-                                (click)="agregarTag()"
+                                maxlength="20"
                                 >
-                            </i>
+                        <div    *ngIf="campoTamValido( 'tit' )"
+                                class="alert-form"
+                                >
+                                    Título debe tener al menos 3 caracteres y un máximo de 20.
                         </div>
-
                     </div>
-
-                    <div class="bloque-tag">
-                        <ul *ngFor="let tag of tagsArr.value; let i = index">
-                            <li (click)="eliminarTag( i )"
+                    <div    class="b-caja-input">
+                        <textarea   id="txt"
+                                    type="text"
+                                    placeholder="Tarea"
+                                    formControlName="txt"
+                                    [ngModel]="tareaModificar.txt"
+                                    class="b-input textarea"
+                                    >
+                                    Tarea
+                        </textarea>
+                        <div    *ngIf="campoTamValido( 'txt' )"
+                                class="alert-form"
                                 >
-                                    {{ tag }}
-                            </li>
-                        </ul>
+                                    Tarea debe tener al menos 3 caracteres.
+                        </div>
                     </div>
-
-                </div>
-
-
-
-                <div    *ngIf="this.tagsArr.value.length === 0"
-                        class=""
-                        >
-
-                        <p>
-                            Escribe el tag deseado y pulsa + para añadirlo a la tarea. Puedes pulsar sobre el tag creado para eliminarlo.
-
-                        </p>
-                        <p>
-                            Cada tag debe de tener entre 3 a 15 caracteres.
-                        </p>
-
-                </div> 
-
-                <div>
-
-                    <button type="submit"
-                            class="b-input btn"
-                            [disabled]="miTarea.invalid"
+                    <div    class="b-tags"
+                            formArrayName="tags"
                             >
-                                Guardar
-                    </button>
+                        <div class="b-introducir-tags">
+                            <input  id="tags"
+                                    type="text"
+                                    placeholder="Tags"
+                                    class="b-input"
+                                    [formControl]="nuevoTag"
+                                    maxlength="15"
+                                    >
             
-                </div>
-                
-            </form>
+                            <div>
+                                <i  class="fa-solid fa-circle-plus"
+                                    (click)="agregarTag()"
+                                    >
+                                </i>
+                            </div>
+                        </div>
+                        <div class="bloque-tag">
+                            <ul *ngFor="let tag of tagsArr.value; let i = index">
+                                <li (click)="eliminarTag( i )"
+                                    >
+                                        {{ tag }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div    *ngIf="this.tagsArr.value.length === 0"
+                            class="b-tag-txt"
+                            >
+                            <p>
+                                Escribe el tag deseado y pulsa + para añadirlo a la tarea. Puedes pulsar sobre el tag creado para eliminarlo.
+                            </p>
+                            <p>
+                                Cada tag debe de tener entre 3 a 15 caracteres.
+                            </p>
+                    </div>
+                    <div>
+                        <button type="submit"
+                                class="b-input btn"
+                                [disabled]="miTarea.invalid"
+                                >
+                                    Guardar
+                        </button>
             
+                    </div>
+            
+                </form>
+            
+            </div>
         </div>
         
     </div>
@@ -143,13 +119,13 @@
     <div    class="bloque-derecha"
             >
 
-        <div    class="bloque-tareas"
-                >
+        <!-- <div    class="bloque-tareas" -->
+                <!-- > -->
                     <app-tarea  [tareasEnvio]="listadoRespuesta.tareas"
                                 (indexMod)="modificar( $event )"
                                 >
                     </app-tarea>
-        </div>
+        <!-- </div> -->
  
     </div>
     

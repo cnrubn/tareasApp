@@ -4,41 +4,45 @@
     Modificar en visor
 </div>
 
-<div    class="contenedor"
-        *ngFor="let tarea of tareasEnvio; let i = index"
-        >
+<div class="contenedor">
 
-    <div class="bloque-funciones">
-
-        <i  class="fa-solid fa-pen-to-square icon editar"
-            (click)="modificar( i )"
+    <div    class="contenedor-tarea"
+            *ngFor="let tarea of tareasEnvio; let i = index"
             >
-        </i>
-
-        <i  class="fa-solid fa-trash icon cubo"
-            (click)="eliminar( i )"
-            >
-        </i>
-
+    
+        <div class="bloque-funciones">
+    
+            <i  class="fa-solid fa-pen-to-square icon editar"
+                (click)="modificar( i )"
+                >
+            </i>
+    
+            <i  class="fa-solid fa-trash icon cubo"
+                (click)="eliminar( i )"
+                >
+            </i>
+    
+        </div>
+    
+        <div class="bloque-tit">
+    
+            <h3>{{ tarea.tit }}</h3>
+    
+        </div>
+    
+        <div class="bloque-tarea">
+            <p>{{ tarea.txt }}</p>
+        </div>
+    
+        <div class="bloque-tags">
+    
+            <ul *ngFor="let tag of tarea.tags">
+                <li>{{ tag }}</li>
+            </ul>
+    
+        </div>
+    
     </div>
-        
-    <div class="bloque-tit">
-
-        <h3>{{ tarea.tit }}</h3>
-
-    </div>
-
-    <div class="bloque-tarea">
-        <p>{{ tarea.txt }}</p>
-    </div>
-
-    <div class="bloque-tags">
-
-        <ul *ngFor="let tag of tarea.tags">
-            <li>{{ tag }}</li>
-        </ul>
-
-    </div>
-
+    
 </div>
 
