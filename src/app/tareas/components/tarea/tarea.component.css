@@ -18,7 +18,7 @@
 }
 
 .contenedor-tarea {
-    border: 1px solid #000;
+    border: 1px solid #373159;
     margin: 20px;
     background-color: #fbfbfb;
     border-radius: 4px;
@@ -29,7 +29,7 @@
     justify-content: flex-end;
     cursor: pointer;
     border-bottom: 1px solid #E3E3E3;
-    background-color: #000;
+    background-color: #373159;
     padding: 5px;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .contenedor .bloque-funciones .icon.editar:hover {
-    color: rgb(0, 115, 255);
+    color: rgb(0, 255, 94);
 }
 
 .contenedor .bloque-funciones .icon.cubo:hover {
@@ -70,9 +70,9 @@
 
 .bloque-tags ul li {
     list-style: none;
-    color: #000;
+    color: #373159;
     border-radius: 9999px;
     padding: 6px 10px;
     background-color: #fff;
-    border: 1px solid #000;
+    border: 1px solid #373159;
 }

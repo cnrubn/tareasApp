@@ -128,7 +128,7 @@ export class AuthService {
       return false;
     }
 
-    // Compración expiración token.
+    // Comprobación expiración token.
     const expira = Number( localStorage.getItem( 'expira' ) );
     const expiraDate = new Date();
     expiraDate.setTime( expira );

@@ -78,6 +78,18 @@
                             </ul>
                         </div>
                     </div>
+
+                    <div    *ngIf="tagInvalido"
+                            class="alert-form"
+                            >
+                                Cada tag debe tener al menos 3 caracteres.
+                    </div>
+                    <div    *ngIf="tagInvalidoEspacios"
+                            class="alert-form"
+                            >
+                                No es posible generar un tag con solo espacios. Cada tag debe tener al menos 3 caracteres, sin contar espacios iniciales o finales.
+                    </div>
+
                     <div    *ngIf="this.tagsArr.value.length === 0"
                             class="b-tag-txt"
                             >

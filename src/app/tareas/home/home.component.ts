@@ -37,10 +37,10 @@ export class HomeComponent implements OnInit {
 
   modificarActivacion: number = -1;
   cargando: boolean = true;
+  modificacionActivo: boolean = false;
 
-  modActivo: boolean = false;
-
-  // avisosInc: boolean = false;
+  tagInvalido: boolean = false;
+  tagInvalidoEspacios: boolean = false;
 
   constructor( private router: Router,
                private auth: AuthService,
@@ -109,33 +109,26 @@ export class HomeComponent implements OnInit {
     this.crudSv.actualizarDb( this.listadoRespuesta )
 
     this.tareaModificar = '';
+
     this.miTarea.reset();
 
-    this.tagsArr.reset();
+    // Reseteo tags.
+    for ( let i of this.tagsArr.value ){
 
-
-    // Resetear tags
-    if ( this.modActivo ) {
-
-      for ( let i of this.tagsArr.value ){
-
-        this.tagsArr.removeAt( i );
-
-      }
+      this.tagsArr.removeAt( i );
 
     }
 
-    this.modActivo = false;
-
+    this.modificacionActivo = false;
 
   }
 
   modificar( index: number ) {
 
     // En caso de pulsar 2 o más veces seguidas el botón modificar es necesario hacer un reset de tags.
-    this.modActivo = true;
+    this.modificacionActivo = true;
 
-    if ( this.modActivo ) {
+    if ( this.modificacionActivo ) {
 
       for ( let i of this.tagsArr.value ){
 
@@ -143,10 +136,7 @@ export class HomeComponent implements OnInit {
 
       }
 
- 
     }
-
-    console.log(this.tagsArr.value)
 
     this.modificarActivacion = index;
 
@@ -155,24 +145,28 @@ export class HomeComponent implements OnInit {
     // Preparando array tags.
     for( let tag of this.tareaModificar.tags ) {
 
-
       this.tagsArr.push( this.fb.control( tag, Validators.required ) );
-
-
 
     }
 
-    // this.tagsArr.push( this.fb.control( this.tareaModificar.tags, Validators.required ) );
-    
-    // console.log(this.tagsArr)
-    // console.log(this.tareaModificar)
   }
 
   agregarTag() {
 
-    // console.log(this.tagsArr)
+    this.tagInvalido = false;
+    this.tagInvalidoEspacios = false;
 
-    if ( this.nuevoTag.invalid ) { return; }
+    if ( this.nuevoTag.invalid ) { 
+      this.tagInvalido = true;
+      return; 
+    }
+
+    if ( this.nuevoTag.value.trim().length < 3 ) { 
+      
+      this.tagInvalidoEspacios = true;
+      return; 
+      
+    }
 
     // this.tagsArr.push( new FormControl( this.nuevoTag.value, Validators.required ) );
     this.tagsArr.push( this.fb.control( this.nuevoTag.value, Validators.required ) );
@@ -196,47 +190,10 @@ export class HomeComponent implements OnInit {
   }
 
   campoTagValido( data: string ) {
-
-    console.log(this.miTarea.errors)
-    console.log(this.miTarea)
    
     return this.miTarea.errors &&
     this.miTarea.touched;
     
   }
-
-  // campoTagInfo() {
-
-    // console.log(this.miTarea)
-
-    // console.log(this.tagsArr)
-
-  //   return !this.miTarea.controls['tags'].touched;
-    
-  // }
-
-  // comprobarVisor() {
-  //   console.log(this.miTarea);
-  // }
-
-  // avisosIncompleto() {
-
-    // this.campoTamValido( 'tit' );
-    // this.campoTamValido( 'txt' );
-
-    // if ( this.miTarea.invalid ) {
-
-    //   this.avisosInc = true;
-    // }
-
-
-
-    // console.log(this.avisosInc)
-    // console.log(this.miTarea.invalid)
-
-    // [disabled]="miTarea.invalid"
-
-    
-  // }
 
 }
